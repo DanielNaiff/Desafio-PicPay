@@ -1,5 +1,6 @@
 package com.danielnaiff.backend.service;
 
+import com.danielnaiff.backend.Exception.DocumentExists;
 import com.danielnaiff.backend.entity.DTO.UserRequestDTO;
 import com.danielnaiff.backend.entity.DTO.UserResponseDTO;
 import com.danielnaiff.backend.entity.User;
@@ -15,11 +16,11 @@ public class UserService {
 
     public UserResponseDTO createUser(UserRequestDTO userRequestDto) {
         if(userRepository.existsByDocument(userRequestDto.document())){
-            throw new IllegalArgumentException("O documento ja existe");
+            throw new DocumentExists("O documento ja existe");
         }
 
         if(userRepository.existsByEmail(userRequestDto.email())){
-            throw new IllegalArgumentException("O email ja existe");
+            throw new DocumentExists("O email ja existe");
         }
 
         User user = User.fromDTO(userRequestDto);
