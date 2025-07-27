@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "tb_user")
 @Setter
@@ -31,6 +33,9 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @Column(name = "balance")
+    private BigDecimal balance = BigDecimal.ZERO;
 
     @Column(nullable = false)
     private UserType userType;

@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,8 +12,8 @@ import java.util.Map;
 @RestControllerAdvice
 public class RestExceptionsHandler{
 
-    @ExceptionHandler(DocumentExists.class)
-    public ResponseEntity<RestErrorMessage> handlerCreateUser(DocumentExists exception){
+    @ExceptionHandler(AttributeDoenstExist.class)
+    public ResponseEntity<RestErrorMessage> handlerCreateUser(AttributeDoenstExist exception){
         RestErrorMessage response = new RestErrorMessage(
                 exception.getMessage(),
                 HttpStatus.UNPROCESSABLE_ENTITY
