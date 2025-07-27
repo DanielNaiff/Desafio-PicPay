@@ -1,6 +1,7 @@
 package com.danielnaiff.backend.entity;
 
 
+import com.danielnaiff.backend.entity.DTO.UserRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,4 +34,14 @@ public class User {
 
     @Column(nullable = false)
     private UserType userType;
+
+    public static User fromDTO(UserRequestDTO dto) {
+        User user = new User();
+        user.setName(dto.name());
+        user.setDocument(dto.document());
+        user.setEmail(dto.email());
+        user.setPassword(dto.password());
+        user.setUserType(dto.userType());
+        return user;
+    }
 }
