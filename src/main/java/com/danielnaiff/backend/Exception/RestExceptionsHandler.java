@@ -32,6 +32,16 @@ public class RestExceptionsHandler{
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(response);
     }
 
+    @ExceptionHandler(NotificationError.class)
+    public ResponseEntity<RestErrorMessage> handlerNotificationError(NotificationError exception){
+        RestErrorMessage response = new RestErrorMessage(
+                exception.getMessage(),
+                HttpStatus.UNPROCESSABLE_ENTITY
+        );
+
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(response);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
