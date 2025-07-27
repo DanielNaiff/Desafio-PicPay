@@ -1,6 +1,8 @@
 package com.danielnaiff.backend.entity;
 
 
+import com.danielnaiff.backend.entity.DTO.TranferRequestDTO;
+import com.danielnaiff.backend.entity.DTO.UserRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,4 +33,5 @@ public class Transfer {
 
     @Column(name = "value")
     private BigDecimal value;
+
 }

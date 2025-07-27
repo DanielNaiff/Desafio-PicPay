@@ -22,6 +22,16 @@ public class RestExceptionsHandler{
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(response);
     }
 
+    @ExceptionHandler(TranferNotValidated.class)
+    public ResponseEntity<RestErrorMessage> handlerTranferNotValidated(TranferNotValidated exception){
+        RestErrorMessage response = new RestErrorMessage(
+                exception.getMessage(),
+                HttpStatus.UNPROCESSABLE_ENTITY
+        );
+
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(response);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
